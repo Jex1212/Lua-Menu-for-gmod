@@ -1,0 +1,1 @@
+![alt text]([http://url/to/img.png](https://cdn.discordapp.com/attachments/751103344281649243/1270219194700664882/image.png?ex=66b2e74f&is=66b195cf&hm=631cbca379da4c7172b41026b9b071f628b4b536c1b2a095d427ce190f242924&)
