@@ -20,8 +20,9 @@ function Menu:Paint(w, h)
     local currentTime = os.date("%H:%M:%S")
 	local title = ("LogeHack.cc | " .. me:Nick() .. " | " .. steamID .. " | " .. currentTime)
     
-    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
-    draw.RoundedBox(8, 0, 0, w, 30, Color(80, 80, 80, 255))
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255)) -- Main frame
+    draw.RoundedBox(8, 0, 0, w, 30, Color(80, 80, 80, 255)) -- Title shit 
+	draw.RoundedBox(8, 0, 13, 49, 22, Color(255, 255, 255, 255))
     draw.RoundedBox(8, 13, 43, 243.5, 393.5, Color(0, 0, 0, 255))
     draw.RoundedBox(8, 170, 37, 60, 20, Color(50, 50, 50, 255))
     draw.RoundedBox(8, 15, 45, 240, 390, Color(100, 100, 100, 255))
@@ -45,6 +46,7 @@ function Menu2:Paint(w, h)
 	local title = ("LogeHack.cc | " .. me:Nick() .. " | " .. steamID .. " | " .. currentTime)
     draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
 	draw.RoundedBox(8, 0, 0, w, 30, Color(80, 80, 80, 255))
+	draw.RoundedBox(8, 57, 13, 64.5, 22, Color(255, 255, 255, 255))
     draw.SimpleText(title, "DebugOverlay", w / 2, 5, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
     draw.SimpleText("Weclome to the new Tab!", "DebugOverlay", w/2, h/2, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
@@ -103,8 +105,8 @@ function tab1:Paint(w, h)
 end
 
 local tab2 = vgui.Create("DButton", Menu)
-tab2:SetPos(55, 15) 
-tab2:SetSize(50, 25)
+tab2:SetPos(57, 15) 
+tab2:SetSize(65, 25)
 tab2:SetText("")
 tab2.DoClick = function()
     Menu:SetVisible(false)
@@ -113,12 +115,12 @@ end
 
 function tab2:Paint(w, h)
     draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
-    draw.SimpleText("Main 2", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    draw.SimpleText("Settings", "DebugOverlay", 34, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 
 local tab2 = vgui.Create("DButton", Menu2)
-tab2:SetPos(55, 15) 
-tab2:SetSize(50, 25)
+tab2:SetPos(57, 15) 
+tab2:SetSize(65, 25)
 tab2:SetText("")
 tab2.DoClick = function()
     Menu:SetVisible(false)
@@ -128,7 +130,7 @@ end
 
 function tab2:Paint(w, h)
     draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
-    draw.SimpleText("Main 2", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    draw.SimpleText("Settings", "DebugOverlay", 34, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 end
 
 local isMenuVisible = false
@@ -146,6 +148,12 @@ hook.Add("Think", "ToggleMenuOnInsert", function()
     end
 end)
 
+--[[
+///////////////////////////
+///// Menu ends here /////
+//////////////////////////
+]]
+
 local function crosshair()
     if checkbox:GetChecked() then
         local x = ScrW() / 2
@@ -157,9 +165,3 @@ local function crosshair()
 end
 
 hook.Add("HUDPaint", "DrawCrosshair", crosshair)
-
---[[
-///////////////////////////
-///// Menu ends here /////
-//////////////////////////
-]]
