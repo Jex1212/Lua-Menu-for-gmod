@@ -1,0 +1,165 @@
+local me = LocalPlayer()
+
+
+--[[
+///////////////////////////
+//// Menu starts here /////
+//////////////////////////
+]]
+local Menu = vgui.Create("DFrame")
+Menu:SetTitle("")
+Menu:SetSize(900, 450)
+Menu:SetDraggable(false)
+Menu:Center()
+Menu:SetVisible(true)
+Menu:ShowCloseButton(false)
+Menu:MakePopup()
+
+function Menu:Paint(w, h)
+	local steamID = me:SteamID()
+    local currentTime = os.date("%H:%M:%S")
+	local title = ("LogeHack.cc | " .. me:Nick() .. " | " .. steamID .. " | " .. currentTime)
+    
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+    draw.RoundedBox(8, 0, 0, w, 30, Color(80, 80, 80, 255))
+    draw.RoundedBox(8, 13, 43, 243.5, 393.5, Color(0, 0, 0, 255))
+    draw.RoundedBox(8, 170, 37, 60, 20, Color(50, 50, 50, 255))
+    draw.RoundedBox(8, 15, 45, 240, 390, Color(100, 100, 100, 255))
+    draw.SimpleText(title, "DebugOverlay", w / 2, 5, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+    draw.SimpleText("Crosshair", "DebugOverlay", 74, 57, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    draw.SimpleText("Testing", "DebugOverlay", 200, 45, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local Menu2 = vgui.Create("DFrame")
+Menu2:SetTitle("")
+Menu2:SetSize(900, 450)
+Menu2:SetDraggable(false)
+Menu2:Center()
+Menu2:SetVisible(false)
+Menu2:ShowCloseButton(false)
+Menu2:MakePopup()
+
+function Menu2:Paint(w, h)
+	local steamID = me:SteamID()
+    local currentTime = os.date("%H:%M:%S")
+	local title = ("LogeHack.cc | " .. me:Nick() .. " | " .. steamID .. " | " .. currentTime)
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+	draw.RoundedBox(8, 0, 0, w, 30, Color(80, 80, 80, 255))
+    draw.SimpleText(title, "DebugOverlay", w / 2, 5, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_TOP)
+    draw.SimpleText("Weclome to the new Tab!", "DebugOverlay", w/2, h/2, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local checkbox = Menu:Add("DCheckBox")
+checkbox:SetPos(25, 50)
+checkbox:SetSize(25, 25)
+checkbox:SetValue(false)
+
+function checkbox:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w/2, h/2, Color(70, 70, 70, 255))
+    if self:GetChecked() then
+        draw.SimpleText("x", "DebugOverlay", w/2 - 6, h/2 - 6, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    end
+end
+
+local checkbox2 = Menu:Add("DCheckBox")
+checkbox2:SetPos(25, 70)
+checkbox2:SetSize(25, 25)
+checkbox2:SetValue(false)
+
+function checkbox2:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w/2, h/2, Color(70, 70, 70, 255))
+    if self:GetChecked() then
+        draw.SimpleText("x", "DebugOverlay", w/2 - 6, h/2 - 6, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+    end
+end
+
+local tab1 = vgui.Create("DButton", Menu)
+tab1:SetPos(0, 15) 
+tab1:SetSize(50, 25)
+tab1:SetText("")
+tab1.DoClick = function()
+    Menu:SetVisible(true)
+    Menu2:SetVisible(false)
+end
+
+function tab1:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+    draw.SimpleText("Main", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local tab1 = vgui.Create("DButton", Menu2)
+tab1:SetPos(0, 15) 
+tab1:SetSize(50, 25)
+tab1:SetText("")
+tab1.DoClick = function()
+    Menu:SetVisible(true)
+    Menu2:SetVisible(false)
+end
+
+
+function tab1:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+    draw.SimpleText("Main", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local tab2 = vgui.Create("DButton", Menu)
+tab2:SetPos(55, 15) 
+tab2:SetSize(50, 25)
+tab2:SetText("")
+tab2.DoClick = function()
+    Menu:SetVisible(false)
+    Menu2:SetVisible(true)
+end
+
+function tab2:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+    draw.SimpleText("Main 2", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local tab2 = vgui.Create("DButton", Menu2)
+tab2:SetPos(55, 15) 
+tab2:SetSize(50, 25)
+tab2:SetText("")
+tab2.DoClick = function()
+    Menu:SetVisible(false)
+    Menu2:SetVisible(true)
+end
+
+
+function tab2:Paint(w, h)
+    draw.RoundedBox(8, 0, 0, w, h, Color(50, 50, 50, 255))
+    draw.SimpleText("Main 2", "DebugOverlay", 25, 10, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+end
+
+local isMenuVisible = false
+local lastToggleTime = 0
+local toggleCooldown = 0.2 
+
+hook.Add("Think", "ToggleMenuOnInsert", function()
+    if input.IsKeyDown(KEY_INSERT) then
+        if CurTime() - lastToggleTime > toggleCooldown then
+            isMenuVisible = not isMenuVisible
+            Menu:SetVisible(isMenuVisible)
+			Menu2:SetVisible(isMenuVisible)
+            lastToggleTime = CurTime()
+        end
+    end
+end)
+
+local function crosshair()
+    if checkbox:GetChecked() then
+        local x = ScrW() / 2
+        local y = ScrH() / 2
+        surface.SetDrawColor(255, 255, 255, 255)
+        surface.DrawCircle(x, y, 5.5, 255, 255, 255, 255)
+        surface.DrawCircle(x, y, 2, 255, 255, 255, 255)
+    end
+end
+
+hook.Add("HUDPaint", "DrawCrosshair", crosshair)
+
+--[[
+///////////////////////////
+///// Menu ends here /////
+//////////////////////////
+]]
