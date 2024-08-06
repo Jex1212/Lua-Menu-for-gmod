@@ -1,1 +1,1 @@
-![Alt text!](https://cdn.discordapp.com/attachments/751103344281649243/1270219194700664882/image.png?ex=66b2e74f&is=66b195cf&hm=631cbca379da4c7172b41026b9b071f628b4b536c1b2a095d427ce190f242924&)
+![Alt text!](https://cdn.discordapp.com/attachments/1065805502367408160/1270462030884634696/image.png?ex=66b3c978&is=66b277f8&hm=f21fcadd32a4c7ee7e3f39562f0375af5b853ce4072da3a6d51b8f8ff893bb78&)
