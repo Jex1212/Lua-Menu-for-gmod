@@ -6,6 +6,30 @@ local me = LocalPlayer()
 //// Menu starts here /////
 //////////////////////////
 ]]
+local Watermark = vgui.Create("DFrame")
+Watermark:SetTitle("")
+Watermark:SetHeight(20)
+Watermark:SetDraggable(false)
+Watermark:SetPos(5, 5)
+Watermark:SetVisible(true)
+Watermark:ShowCloseButton(false)
+
+function Watermark:Paint(w, h)
+    local text = "Logehack V2 | Ping: " .. LocalPlayer():Ping() .. " | " .. GetHostName() .. " | " .. engine.ActiveGamemode() .. " | Tick: " .. math.Round(1 / engine.TickInterval() - 1) .. " | FPS: " .. math.Round(1 / FrameTime())
+    surface.SetFont("DebugOverlay")
+    
+    local textWidth, textHeight = surface.GetTextSize(text)
+    
+    self:SetWide(textWidth + 10)
+    self:SetTall(textHeight + 10)
+    
+    draw.RoundedBox(8, 0, 0, self:GetWide(), self:GetTall(), Color(50, 50, 50, 155))
+    draw.SimpleText(text, "DebugOverlay", 5, 5, Color(255, 255, 255, 255), TEXT_ALIGN_LEFT, TEXT_ALIGN_TOP)
+end
+
+
+
+
 local Menu = vgui.Create("DFrame")
 Menu:SetTitle("")
 Menu:SetSize(900, 450)
